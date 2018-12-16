@@ -68,5 +68,10 @@ namespace WindowsFormsApplication1
                 errorProvider1.SetError(textBox2, "Поле не должно быть пустым");
             }
         }
+
+        private void registration_Load(object sender, EventArgs e)
+        {
+            textBox2.UseSystemPasswordChar = true;
+        }
     }
 }

@@ -107,6 +107,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(15, 40);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(120, 118);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
@@ -297,7 +298,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(588, 294);
+            this.ClientSize = new System.Drawing.Size(588, 241);
             this.ControlBox = false;
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);

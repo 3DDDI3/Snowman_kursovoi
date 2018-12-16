@@ -27,23 +27,23 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = new DataSet();
             if (searchValue == "where ")
             {
-                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
                   "from property " +
                   "left join type on property.type = type.idType " +
                   "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
                   "left join cities on property.idCity = cities.idCity " +
-                  "left join area on property.idArea = area.idArea " +
+                  "left join areas on property.idArea = areas.idArea " +
                   "left join district on property.idDistrict = district.idDistrict " +
                   "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation where isRemoveBuyRent<>1";
             }
             else
             {
-                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
                 "from property " +
                 "left join type on property.type = type.idType " +
                 "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
                 "left join cities on property.idCity = cities.idCity " +
-                "left join area on property.idArea = area.idArea " +
+                "left join areas on property.idArea = areas.idArea " +
                 "left join district on property.idDistrict = district.idDistrict " +
                 "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation " + searchValue.Remove(searchValue.Length - 4) + " and isRemoveBuyRent<>1";
             }
@@ -60,15 +60,13 @@ namespace WindowsFormsApplication1
 
         private void Form2_Load(object sender, EventArgs e) //загрузка формы
         {
-            switch(PublicClasses.privelege)
+            if (PublicClasses.privelege == 1)
             {
-                case 1:
-                    {
-                        contextMenuStrip1.Items.AddRange("Подробная информация", "Купить недвижимость");
-                        break;
-                    }
-                case 2:
-
+                contextMenuStrip1.Items[0].Visible = false;
+                contextMenuStrip1.Items[1].Visible = false;
+                contextMenuStrip1.Items[2].Visible = false;
+                contextMenuStrip1.Items[3].Visible = false;
+                contextMenuStrip1.Items[5].Visible = false;
             }
             time = DateTime.Now;
             toolStrip1.Items[0].Text = " Время: " + time.ToLongTimeString();
@@ -77,18 +75,18 @@ namespace WindowsFormsApplication1
             comboBox1.Items.AddRange(PublicClasses.loadStringsToCmbbox());
             PublicClasses.sql = "select city from cities";
             comboBox2.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select area from area";
+            PublicClasses.sql = "select area from areas";
             comboBox3.Items.AddRange(PublicClasses.loadStringsToCmbbox());
             PublicClasses.sql = "select district from district";
             comboBox4.Items.AddRange(PublicClasses.loadStringsToCmbbox());
             PublicClasses.sql = "select undergroundStation from undergroundstations";
             comboBox5.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажу','Аренду') as 'Выставлен на', price " +
+            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажу','Аренду') as 'Выставлен на', price " +
                "from property " +
                "left join type on property.type = type.idType " +
                "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
                "left join cities on property.idCity = cities.idCity " +
-               "left join area on property.idArea = area.idArea " +
+               "left join areas on property.idArea = areas.idArea " +
                "left join district on property.idDistrict = district.idDistrict " +
                "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation " +
                "where isRemoveBuyRent<>1";
@@ -136,7 +134,7 @@ namespace WindowsFormsApplication1
             searchValue = "where ";
             if (comboBox1.Text != "") { searchValue += "concat(type.type, ' ', typeproperty.typeProperty)=" + "'" + comboBox1.Text + "' and "; }
             if (comboBox2.Text != "") { searchValue += "city=" + "'" + comboBox2.Text + "' and "; }
-            if (comboBox3.Text != "") { searchValue += "area=" + "'" + comboBox3.Text + "' and "; }
+            if (comboBox3.Text != "") { searchValue += "areas=" + "'" + comboBox3.Text + "' and "; }
             if (comboBox4.Text != "") { searchValue += "district=" + "'" + comboBox4.Text + "' and "; }
             if (comboBox5.Text != "") { searchValue += "undergroundestation=" + "'" + comboBox5.Text + "' and "; }
             if (radioButton1.Checked) { searchValue += "buyRent=0 and "; }
@@ -155,7 +153,6 @@ namespace WindowsFormsApplication1
             if (searchValue == "where ") { MessageBox.Show("Вы не заполнили ни одного поля", "Поиск недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             else
             {
-                MessageBox.Show(PublicClasses.sql);
                 label10.Visible = true;
                 if (PublicClasses.executeSqlRequest().Tables[0].Rows.Count != 0)
                 {
@@ -167,12 +164,14 @@ namespace WindowsFormsApplication1
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e) //пункт меню
         {
+            this.Hide();
             detailedDescription form7 = new detailedDescription();
             form7.ShowDialog();
         }
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e) //пункт меню
         {
+            this.Hide();
             addProperty form6 = new addProperty();
             form6.ShowDialog();
         }
@@ -195,18 +194,21 @@ namespace WindowsFormsApplication1
         {
             detailedDescription form7 = new detailedDescription();
             form7.ShowDialog();
+            this.Close();
         }
 
         private void инфомацияОКлиентахToolStripMenuItem_Click(object sender, EventArgs e)
         {
             clients clients = new clients();
             clients.Show();
+            this.Close();
         }
 
         private void информацияОВладельцахToolStripMenuItem_Click(object sender, EventArgs e)
         {
             owners owners = new owners();
             owners.Show();
+            this.Close();
         }
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -226,16 +228,17 @@ namespace WindowsFormsApplication1
         {
             addClientOwner addOwner = new addClientOwner("addOwner");
             addOwner.ShowDialog();
-        }
-
-        private void удалитьВладельцаToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void купитьНедвижимостьToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //if (radioButton1.Checked) { contextMenuStrip1.Items.}
+            /*if (PublicClasses.privelege == 1)
+            {
+                PublicClasses.sql = "insert into contracts(idContract,idProperty,idPerson,idClient,date) values(" + values.Remove(values.Length - 1) + ",0" + ")";
+                PublicClasses.executeSqlRequest();
+                MessageBox.Show("Недвижимость успешно добавлена", "Добавление недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }*/
         }
 
         private void информацияОСотрудникахToolStripMenuItem_Click(object sender, EventArgs e)
@@ -248,9 +251,8 @@ namespace WindowsFormsApplication1
         private void информацияОДоговорахToolStripMenuItem_Click(object sender, EventArgs e)
         {
             contracts contracts = new contracts();
-            property property = new property();
-            property.Close();
             contracts.Show();
+            this.Close();
         }
 
         private void property_FormClosed(object sender, FormClosedEventArgs e)

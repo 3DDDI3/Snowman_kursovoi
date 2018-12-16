@@ -57,7 +57,7 @@ namespace WindowsFormsApplication1
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if ((e.RowIndex > -1) || (e.Button == MouseButtons.Right))
+            if (((e.RowIndex > -1) || (e.Button == MouseButtons.Right)) && e.RowIndex < dataGridView1.Rows.Count - 1)
             {
                 dataGridView1.ClearSelection();
                 dataGridView1.Rows[e.RowIndex].Selected = true;
@@ -70,21 +70,33 @@ namespace WindowsFormsApplication1
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addClientOwner addOwner= new addClientOwner("addOwner");
-            this.Hide();
             addOwner.ShowDialog();
+            this.Close();
         }
 
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             addClientOwner changeOwnersData = new addClientOwner("changeOwnersData");
-            this.Hide();
             changeOwnersData.Show();
+            this.Close();
         }
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PublicClasses.deleteSelectedRow(dataGridView1, "clients", "isDeleted=1", "idClient");
             loadDataGridView();
+        }
+
+        private void owners_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 1) { Application.Exit(); }
+        }
+
+        private void информацияОНедвижимостиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            property prty = new property();
+            prty.Show();
+            this.Close();
         }
     }
 }

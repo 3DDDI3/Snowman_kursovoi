@@ -62,7 +62,6 @@
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.подробнаяИнфорацияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заключенныеДоговорыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.купитьНедвижимостьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -196,7 +195,6 @@
             this.удалитьВладельцаToolStripMenuItem.Name = "удалитьВладельцаToolStripMenuItem";
             this.удалитьВладельцаToolStripMenuItem.Size = new System.Drawing.Size(236, 22);
             this.удалитьВладельцаToolStripMenuItem.Text = "Удалить владельца";
-            this.удалитьВладельцаToolStripMenuItem.Click += new System.EventHandler(this.удалитьВладельцаToolStripMenuItem_Click);
             // 
             // выставленнаяНедвижимостьToolStripMenuItem
             // 
@@ -319,7 +317,6 @@
             this.удалитьToolStripMenuItem,
             this.toolStripMenuItem2,
             this.подробнаяИнфорацияToolStripMenuItem,
-            this.заключенныеДоговорыToolStripMenuItem,
             this.купитьНедвижимостьToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
@@ -359,12 +356,6 @@
             this.подробнаяИнфорацияToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
             this.подробнаяИнфорацияToolStripMenuItem.Text = "Подробная инфорация";
             this.подробнаяИнфорацияToolStripMenuItem.Click += new System.EventHandler(this.подробнаяИнфорацияToolStripMenuItem_Click);
-            // 
-            // заключенныеДоговорыToolStripMenuItem
-            // 
-            this.заключенныеДоговорыToolStripMenuItem.Name = "заключенныеДоговорыToolStripMenuItem";
-            this.заключенныеДоговорыToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.заключенныеДоговорыToolStripMenuItem.Text = "Заключенные договоры";
             // 
             // купитьНедвижимостьToolStripMenuItem1
             // 
@@ -734,7 +725,6 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ToolStripMenuItem выставленнаяНедвижимостьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem заключенныеДоговорыToolStripMenuItem;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;

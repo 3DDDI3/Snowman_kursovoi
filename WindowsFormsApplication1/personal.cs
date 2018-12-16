@@ -92,7 +92,6 @@ namespace WindowsFormsApplication1
             addPerson changePersonsData = new addPerson("changePersonsData");
             this.Close();
             changePersonsData.ShowDialog();
-            //this.Close();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

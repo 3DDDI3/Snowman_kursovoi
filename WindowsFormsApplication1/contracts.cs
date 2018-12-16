@@ -32,11 +32,39 @@ namespace WindowsFormsApplication1
             dataGridView1.Columns[8].HeaderText = "Цена";
             dataGridView1.Columns[9].HeaderText = "Выставлен на";
             dataGridView1.Columns[10].HeaderText = "Статус договора";
+            //PublicClasses.sql="select idProperty"
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*string where = "";
             MessageBox.Show(dateTimePicker1.Value.ToShortDateString());
+            if (!string.IsNullOrWhiteSpace(comboBox1.Text))
+            {
+                PublicClasses.sql = "select idPerson from persons where concat(surname,' ', left(name,1),'.',left(lastname,1),'.')=" + comboBox1.Text;
+                int idPerson = Convert.ToInt16(PublicClasses.executeSqlRequest());
+                where += "idPerson=" + idPerson+",";
+            }
+            if (!string.IsNullOrWhiteSpace(comboBox2.Text))
+            {
+                PublicClasses.sql = "select idClient from clients where concat(surname,' ', left(name,1),'.',left(lastname,1),'.')=" + comboBox2.Text;
+                int idClient = Convert.ToInt16(PublicClasses.executeSqlRequest());
+                where += "idClient=" + idClient + ",";
+            }
+            if (!string.IsNullOrWhiteSpace(comboBox3.Text))
+            {
+                PublicClasses.sql = "select idOwner from owners where concat(surname,' ', left(name,1),'.',left(lastname,1),'.')=" + comboBox3.Text;
+                int idOwner = Convert.ToInt16(PublicClasses.executeSqlRequest());
+                where += "idOwner=" + idOwner + ",";
+            }
+            where+="date between " + dateTimePicker1.Value.ToShortDateString() + " and " + dateTimePicker2.Value.ToShortDateString()+",";
+            if(!string.IsNullOrWhiteSpace(comboBox4.Text))
+            {
+                if(comboBox4.Text=="Договор не подтвержден") { where += "status=0"; }
+                if(comboBox4.Text=="Договор подтвержден") { where += "status=1"; }
+            }
+            PublicClasses.sql = "select * from showcontracts where" + where;
+            MessageBox.Show(PublicClasses.sql);*/
         }
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)

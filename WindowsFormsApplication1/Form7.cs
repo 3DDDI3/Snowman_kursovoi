@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class detailedDescription : Form
+    public partial class Form7 : Form
     {
-        public detailedDescription()
+        public Form7()
         {
             InitializeComponent();
         }
@@ -80,7 +80,7 @@ namespace WindowsFormsApplication1
             textBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[11].ToString();
             if (PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[5].ToString() == "Аренду") { radioButton1.Checked = true; }
             else { radioButton2.Checked = true; }
-            richTextBox1.Text=PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[12].ToString();
+            richTextBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[12].ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -108,11 +108,13 @@ namespace WindowsFormsApplication1
 
         private void button4_Click(object sender, EventArgs e) //сохранение изменений
         {
-            bool l = true;
-            if (string.IsNullOrWhiteSpace(textBox1.Text)) { errorProvider1.SetError(label11, "Поле не должно быть пустым"); l = false; } else { l = true; }
-            if (string.IsNullOrWhiteSpace(comboBox5.Text)) { errorProvider1.SetError(comboBox5, "Поле не должно быть пустым"); l = false; } else { l = true; }
-            if (string.IsNullOrWhiteSpace(comboBox6.Text)) { errorProvider1.SetError(comboBox6, "Поле не должно быть пустым"); l = false; } else { l = true; }
-            if(l)
+            if (string.IsNullOrEmpty(comboBox5.Text) || string.IsNullOrEmpty(comboBox6.Text) || string.IsNullOrEmpty(textBox1.Text))
+            {
+                if (string.IsNullOrEmpty(textBox1.Text)) { errorProvider1.SetError(label11, "Поле не должно быть пустым"); }
+                if (string.IsNullOrEmpty(comboBox5.Text)) { errorProvider1.SetError(comboBox5, "Поле не должно быть пустым"); }
+                if (string.IsNullOrEmpty(comboBox6.Text)) { errorProvider1.SetError(comboBox6, "Поле не должно быть пустым"); }
+            }
+            else
             {
                 string set = "";
                 if (comboBox1.Text != "")
@@ -164,7 +166,7 @@ namespace WindowsFormsApplication1
                     PublicClasses.executeSqlRequest();
                     MessageBox.Show("Изменения успешно занесены.", "Изменение данных недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                catch(Exception ex) { MessageBox.Show(ex.Message, "Изменение данных недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                catch(Exception ex) { MessageBox.Show("Что-то пошло не так. Поробуйте еще раз.", "Изменение данных недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
         }
 
@@ -178,46 +180,23 @@ namespace WindowsFormsApplication1
         private void Form7_Load(object sender, EventArgs e) //вставка данных в поля
         {
             loadFormFields(PublicClasses.selectedRowIndex,0);
-            if(PublicClasses.privelege==1)
-            {
-                button1.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-            }
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
-                   "from property " +
-                   "left join type on property.type = type.idType " +
-                   "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
-                   "left join cities on property.idCity = cities.idCity " +
-                   "left join area on property.idArea = area.idArea " +
-                   "left join district on property.idDistrict = district.idDistrict " +
-                   "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation where isRemoveBuyRent<>1";
             if (PublicClasses.rowIndex > 0)
             {
                 PublicClasses.rowIndex--;
-                PublicClasses.selectedRowIndex =Convert.ToInt16(PublicClasses.executeSqlRequest().Tables[0].Rows[PublicClasses.rowIndex].ItemArray[0]);
             }
             loadFormFields(-1, PublicClasses.rowIndex);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
-                  "from property " +
-                  "left join type on property.type = type.idType " +
-                  "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
-                  "left join cities on property.idCity = cities.idCity " +
-                  "left join area on property.idArea = area.idArea " +
-                  "left join district on property.idDistrict = district.idDistrict " +
-                  "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation where isRemoveBuyRent<>1";
-            if (PublicClasses.rowIndex > 0)
+            PublicClasses.sql = "select * from property";
+            if (PublicClasses.rowIndex < PublicClasses.executeSqlRequest().Tables[0].Rows.Count-1)
             {
                 PublicClasses.rowIndex++;
-                PublicClasses.selectedRowIndex = Convert.ToInt16(PublicClasses.executeSqlRequest().Tables[0].Rows[PublicClasses.rowIndex].ItemArray[0]);
             }
             loadFormFields(-1, PublicClasses.rowIndex);
         }

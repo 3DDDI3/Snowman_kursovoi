@@ -36,17 +36,17 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         { 
             this.Close();
+            property property = new property();
+            property.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(comboBox5.Text) || string.IsNullOrEmpty(comboBox6.Text) || string.IsNullOrEmpty(textBox1.Text))
-            {
-                errorProvider1.SetError(comboBox5, "Поле не должно быть пустым");
-                errorProvider1.SetError(comboBox6, "Поле не должно быть пустым");
-                errorProvider1.SetError(label11, "Поле не должно быть пустым");
-            }
-            else
+            bool l = true;
+            if (string.IsNullOrWhiteSpace(textBox1.Text)) { errorProvider1.SetError(label11, "Поле не должно быть пустым"); l = false; } else { l = true; }
+            if (string.IsNullOrWhiteSpace(comboBox5.Text)) { errorProvider1.SetError(comboBox5, "Поле не должно быть пустым"); l = false; } else { l = true; }
+            if (string.IsNullOrWhiteSpace(comboBox6.Text)) { errorProvider1.SetError(comboBox6, "Поле не должно быть пустым"); l = false; } else { l = true; }
+            if(l)
             {
                 PublicClasses.sql = "select count(idProperty) from property";
                 int idProperty = Convert.ToInt16(PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[0])+1;
@@ -100,9 +100,14 @@ namespace WindowsFormsApplication1
                 if (checkBox1.Checked) { columns += "isLoggia,"; values += "1,"; }
                 if (radioButton1.Checked) { columns += "buyRent,"; values += "0,"; }
                 if (radioButton2.Checked) { columns += "buyRent,"; values += "1,"; }
-                PublicClasses.sql = "insert into property(" + columns.Remove(columns.Length - 1) +",isRemoveBuyRent"+") values(" + values.Remove(values.Length - 1) +",0"+ ")";
-                MessageBox.Show(PublicClasses.sql);
-                PublicClasses.executeSqlRequest();
+                try
+                {
+                    PublicClasses.sql = "insert into property(" + columns.Remove(columns.Length - 1) + ",isRemoveBuyRent" + ") values(" + values.Remove(values.Length - 1) + ",0" + ")";
+                    PublicClasses.executeSqlRequest();
+                    MessageBox.Show("Недвижимость успешно добавлена", "Добавление недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch(Exception ex)
+                { MessageBox.Show(ex.Message, "Добавление недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
         }
 

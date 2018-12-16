@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class detailedDescription
+    partial class Form7
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(detailedDescription));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form7));
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -310,7 +310,6 @@
             // comboBox6
             // 
             this.comboBox6.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.comboBox6.Enabled = false;
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Location = new System.Drawing.Point(459, 41);
             this.comboBox6.Name = "comboBox6";
@@ -456,7 +455,7 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // detailedDescription
+            // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -474,9 +473,8 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.comboBox6);
             this.Controls.Add(this.label12);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "detailedDescription";
+            this.Name = "Form7";
             this.Text = "Дополнительная информация о недвижимости";
             this.Load += new System.EventHandler(this.Form7_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

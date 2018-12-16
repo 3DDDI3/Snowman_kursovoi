@@ -49,10 +49,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.недвижимостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.купитьарендоватьНедвижимостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.редактироватьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.удалитьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.информацияОВладельцахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.договрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияОДоговорахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиСоединенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настроитьСоединениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -144,6 +147,7 @@
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripSeparator1,
@@ -152,12 +156,14 @@
             this.toolStripLabel3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 451);
             this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(613, 25);
             this.toolStrip1.TabIndex = 13;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolStripLabel1
             // 
+            this.toolStripLabel1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripLabel1.Name = "toolStripLabel1";
             this.toolStripLabel1.Size = new System.Drawing.Size(86, 22);
             this.toolStripLabel1.Text = "toolStripLabel1";
@@ -169,6 +175,7 @@
             // 
             // toolStripLabel2
             // 
+            this.toolStripLabel2.BackColor = System.Drawing.Color.Transparent;
             this.toolStripLabel2.Name = "toolStripLabel2";
             this.toolStripLabel2.Size = new System.Drawing.Size(86, 22);
             this.toolStripLabel2.Text = "toolStripLabel2";
@@ -180,6 +187,8 @@
             // 
             // toolStripLabel3
             // 
+            this.toolStripLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripLabel3.LinkColor = System.Drawing.Color.White;
             this.toolStripLabel3.Name = "toolStripLabel3";
             this.toolStripLabel3.Size = new System.Drawing.Size(86, 22);
             this.toolStripLabel3.Text = "toolStripLabel3";
@@ -188,7 +197,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.недвижимостьToolStripMenuItem,
-            this.клиентыToolStripMenuItem});
+            this.клиентыToolStripMenuItem,
+            this.договрыToolStripMenuItem,
+            this.настройкиСоединенияToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(613, 24);
@@ -198,10 +209,7 @@
             // недвижимостьToolStripMenuItem
             // 
             this.недвижимостьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.купитьарендоватьНедвижимостьToolStripMenuItem,
-            this.добавитьToolStripMenuItem,
-            this.редактироватьToolStripMenuItem1,
-            this.удалитьToolStripMenuItem1});
+            this.купитьарендоватьНедвижимостьToolStripMenuItem});
             this.недвижимостьToolStripMenuItem.Name = "недвижимостьToolStripMenuItem";
             this.недвижимостьToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
             this.недвижимостьToolStripMenuItem.Text = "Недвижимость";
@@ -209,32 +217,56 @@
             // купитьарендоватьНедвижимостьToolStripMenuItem
             // 
             this.купитьарендоватьНедвижимостьToolStripMenuItem.Name = "купитьарендоватьНедвижимостьToolStripMenuItem";
-            this.купитьарендоватьНедвижимостьToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.купитьарендоватьНедвижимостьToolStripMenuItem.Text = "Купить/арендовать недвижимость";
-            // 
-            // добавитьToolStripMenuItem
-            // 
-            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
-            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.добавитьToolStripMenuItem.Text = "Добавить ";
-            // 
-            // редактироватьToolStripMenuItem1
-            // 
-            this.редактироватьToolStripMenuItem1.Name = "редактироватьToolStripMenuItem1";
-            this.редактироватьToolStripMenuItem1.Size = new System.Drawing.Size(263, 22);
-            this.редактироватьToolStripMenuItem1.Text = "Редактировать";
-            // 
-            // удалитьToolStripMenuItem1
-            // 
-            this.удалитьToolStripMenuItem1.Name = "удалитьToolStripMenuItem1";
-            this.удалитьToolStripMenuItem1.Size = new System.Drawing.Size(263, 22);
-            this.удалитьToolStripMenuItem1.Text = "Удалить";
+            this.купитьарендоватьНедвижимостьToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.купитьарендоватьНедвижимостьToolStripMenuItem.Text = "Информация о недвижимости";
             // 
             // клиентыToolStripMenuItem
             // 
+            this.клиентыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОВладельцахToolStripMenuItem});
             this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.клиентыToolStripMenuItem.Text = "Клиенты";
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.клиентыToolStripMenuItem.Text = "Владельцы";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // информацияОВладельцахToolStripMenuItem
+            // 
+            this.информацияОВладельцахToolStripMenuItem.Name = "информацияОВладельцахToolStripMenuItem";
+            this.информацияОВладельцахToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.информацияОВладельцахToolStripMenuItem.Text = "Информация о владельцах";
+            // 
+            // договрыToolStripMenuItem
+            // 
+            this.договрыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОДоговорахToolStripMenuItem});
+            this.договрыToolStripMenuItem.Name = "договрыToolStripMenuItem";
+            this.договрыToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.договрыToolStripMenuItem.Text = "Договоры";
+            // 
+            // информацияОДоговорахToolStripMenuItem
+            // 
+            this.информацияОДоговорахToolStripMenuItem.Name = "информацияОДоговорахToolStripMenuItem";
+            this.информацияОДоговорахToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.информацияОДоговорахToolStripMenuItem.Text = "Информация о договорах";
+            // 
+            // настройкиСоединенияToolStripMenuItem
+            // 
+            this.настройкиСоединенияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.настроитьСоединениеToolStripMenuItem});
+            this.настройкиСоединенияToolStripMenuItem.Name = "настройкиСоединенияToolStripMenuItem";
+            this.настройкиСоединенияToolStripMenuItem.Size = new System.Drawing.Size(147, 20);
+            this.настройкиСоединенияToolStripMenuItem.Text = "Настройки соединения";
+            // 
+            // настроитьСоединениеToolStripMenuItem
+            // 
+            this.настроитьСоединениеToolStripMenuItem.Name = "настроитьСоединениеToolStripMenuItem";
+            this.настроитьСоединениеToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
+            this.настроитьСоединениеToolStripMenuItem.Text = "Настроить соединение";
             // 
             // clients
             // 
@@ -254,6 +286,7 @@
             this.MinimizeBox = false;
             this.Name = "clients";
             this.Text = "Клиенты";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.clients_FormClosed);
             this.Load += new System.EventHandler(this.Form4_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
@@ -287,10 +320,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem недвижимостьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem купитьарендоватьНедвижимостьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem редактироватьToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem удалитьToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
         public System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem информацияОВладельцахToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem договрыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem информацияОДоговорахToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настройкиСоединенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настроитьСоединениеToolStripMenuItem;
     }
 }

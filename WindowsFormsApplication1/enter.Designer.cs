@@ -197,7 +197,7 @@
             this.Name = "enter";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Форма входа в агентство недвижимости Snowman";
+            this.Text = "Вход в агентство недвижимости";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

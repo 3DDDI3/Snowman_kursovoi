@@ -87,12 +87,6 @@
     <Compile Include="addClientOwner.Designer.cs">
       <DependentUpon>addClientOwner.cs</DependentUpon>
     </Compile>
-    <Compile Include="mainUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mainUser.Designer.cs">
-      <DependentUpon>mainUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="owners.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,9 +149,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="addClientOwner.resx">
       <DependentUpon>addClientOwner.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mainUser.resx">
-      <DependentUpon>mainUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="owners.resx">
       <DependentUpon>owners.cs</DependentUpon>

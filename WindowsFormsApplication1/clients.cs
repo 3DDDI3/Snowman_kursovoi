@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        public DateTime time = new DateTime();
+
         public void loadDataGridView()
         {
             dataGridView1.DataSource = null;
@@ -88,5 +90,17 @@ namespace WindowsFormsApplication1
             changeClientsData.ShowDialog();
         }
 
+        private void clients_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 1) { Application.Exit(); }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time = DateTime.Now;
+            toolStrip1.Items[0].Text = " Время: " + time.ToLongTimeString();
+            toolStrip1.Items[2].Text = "Пользователь: " + PublicClasses.UserLogin;
+            toolStrip1.Items[4].Text = "Соединения с базой: активно";
+        }
     }
 }

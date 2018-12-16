@@ -81,7 +81,8 @@
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.comboBox4.Items.AddRange(new object[] {
-            "true"});
+            "Договор не подтвержден",
+            "Договор подтвержден"});
             this.comboBox4.Location = new System.Drawing.Point(135, 160);
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(159, 21);

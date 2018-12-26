@@ -115,5 +115,26 @@ namespace WindowsFormsApplication1
             }
             return mas;
         }
+<<<<<<< HEAD
+=======
+        static public string[] getPrivelege(int indexPrivelege)
+        {
+            string[] mas;
+            switch(indexPrivelege)
+            {
+                case 1:
+                    {
+                        mas = new[] { "Подробная информация", "Купить недвижимость"};
+                        break;
+                    }
+                default:
+                    {
+                        mas = new[] { "Добавить", "Редактировать", "Удадлить", "Снять с аренды продажи", "Подробная информация", "Заключенные договоры", "Купить недвижимость" };
+                        break;
+                    }
+            }
+            return mas;
+        }
+>>>>>>> 4d95f41c88b4852dd4b33d8815d34019bf240258
     }
 }

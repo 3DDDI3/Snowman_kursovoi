@@ -27,7 +27,11 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = new DataSet();
             if (searchValue == "where ")
             {
+<<<<<<< HEAD
                 PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
+=======
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
+>>>>>>> 4d95f41c88b4852dd4b33d8815d34019bf240258
                   "from property " +
                   "left join type on property.type = type.idType " +
                   "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
@@ -38,7 +42,11 @@ namespace WindowsFormsApplication1
             }
             else
             {
+<<<<<<< HEAD
                 PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
+=======
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
+>>>>>>> 4d95f41c88b4852dd4b33d8815d34019bf240258
                 "from property " +
                 "left join type on property.type = type.idType " +
                 "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
@@ -60,7 +68,11 @@ namespace WindowsFormsApplication1
 
         private void Form2_Load(object sender, EventArgs e) //загрузка формы
         {
+<<<<<<< HEAD
             if (PublicClasses.privelege == 1)
+=======
+            switch(PublicClasses.privelege)
+>>>>>>> 4d95f41c88b4852dd4b33d8815d34019bf240258
             {
                 contextMenuStrip1.Items[0].Visible = false;
                 contextMenuStrip1.Items[1].Visible = false;
@@ -153,6 +165,10 @@ namespace WindowsFormsApplication1
             if (searchValue == "where ") { MessageBox.Show("Вы не заполнили ни одного поля", "Поиск недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             else
             {
+<<<<<<< HEAD
+=======
+                MessageBox.Show(PublicClasses.sql);
+>>>>>>> 4d95f41c88b4852dd4b33d8815d34019bf240258
                 label10.Visible = true;
                 if (PublicClasses.executeSqlRequest().Tables[0].Rows.Count != 0)
                 {
@@ -164,7 +180,10 @@ namespace WindowsFormsApplication1
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e) //пункт меню
         {
+<<<<<<< HEAD
             this.Hide();
+=======
+>>>>>>> 4d95f41c88b4852dd4b33d8815d34019bf240258
             detailedDescription form7 = new detailedDescription();
             form7.ShowDialog();
         }

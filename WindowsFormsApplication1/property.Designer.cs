@@ -106,9 +106,9 @@
             this.toolStripMenuItem1,
             this.клиентыToolStripMenuItem,
             this.владельцыToolStripMenuItem,
+            this.сотрудникиToolStripMenuItem,
             this.договорыToolStripMenuItem,
-            this.настройкиToolStripMenuItem,
-            this.сотрудникиToolStripMenuItem});
+            this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(730, 24);
@@ -228,7 +228,7 @@
             // соединениеСБДToolStripMenuItem
             // 
             this.соединениеСБДToolStripMenuItem.Name = "соединениеСБДToolStripMenuItem";
-            this.соединениеСБДToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.соединениеСБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.соединениеСБДToolStripMenuItem.Text = "Соединение с БД";
             this.соединениеСБДToolStripMenuItem.Click += new System.EventHandler(this.соединениеСБДToolStripMenuItem_Click);
             // 

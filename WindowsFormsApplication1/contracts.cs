@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        public DateTime time;
+
         private void contracts_Load(object sender, EventArgs e)
         {
             PublicClasses.sql = "select * from showcontracts";
@@ -32,38 +34,12 @@ namespace WindowsFormsApplication1
             dataGridView1.Columns[8].HeaderText = "Цена";
             dataGridView1.Columns[9].HeaderText = "Выставлен на";
             dataGridView1.Columns[10].HeaderText = "Статус договора";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*string where = "";
-            MessageBox.Show(dateTimePicker1.Value.ToShortDateString());
-            if (!string.IsNullOrWhiteSpace(comboBox1.Text))
-            {
-                PublicClasses.sql = "select idPerson from persons where concat(surname,' ', left(name,1),'.',left(lastname,1),'.')=" + comboBox1.Text;
-                int idPerson = Convert.ToInt16(PublicClasses.executeSqlRequest());
-                where += "idPerson=" + idPerson+",";
-            }
-            if (!string.IsNullOrWhiteSpace(comboBox2.Text))
-            {
-                PublicClasses.sql = "select idClient from clients where concat(surname,' ', left(name,1),'.',left(lastname,1),'.')=" + comboBox2.Text;
-                int idClient = Convert.ToInt16(PublicClasses.executeSqlRequest());
-                where += "idClient=" + idClient + ",";
-            }
-            if (!string.IsNullOrWhiteSpace(comboBox3.Text))
-            {
-                PublicClasses.sql = "select idOwner from owners where concat(surname,' ', left(name,1),'.',left(lastname,1),'.')=" + comboBox3.Text;
-                int idOwner = Convert.ToInt16(PublicClasses.executeSqlRequest());
-                where += "idOwner=" + idOwner + ",";
-            }
-            where+="date between " + dateTimePicker1.Value.ToShortDateString() + " and " + dateTimePicker2.Value.ToShortDateString()+",";
-            if(!string.IsNullOrWhiteSpace(comboBox4.Text))
-            {
-                if(comboBox4.Text=="Договор не подтвержден") { where += "status=0"; }
-                if(comboBox4.Text=="Договор подтвержден") { where += "status=1"; }
-            }
-            PublicClasses.sql = "select * from showcontracts where" + where;
-            MessageBox.Show(PublicClasses.sql);*/
+            PublicClasses.sql = "select concat(surname,' ', left(name,1),'.',left(lastname,1),'.') from persons where isDeleted=0";
+            comboBox1.Items.AddRange(PublicClasses.loadStringsToCmbbox());
+            PublicClasses.sql = "select concat(surname,' ', left(name,1),'.',left(lastname,1),'.') from clients where isDeleted=0";
+            comboBox2.Items.AddRange(PublicClasses.loadStringsToCmbbox());
+            PublicClasses.sql = "select concat(surname,' ', left(name,1),'.',left(lastname,1),'.') from owners where isDeleted=0";
+            comboBox3.Items.AddRange(PublicClasses.loadStringsToCmbbox());
         }
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -109,13 +85,20 @@ namespace WindowsFormsApplication1
         private void соединениеСБДToolStripMenuItem_Click(object sender, EventArgs e)
         {
             dbSettings dbsttgs = new dbSettings();
-            dbsttgs.Show();
-            this.Close();
+            dbsttgs.ShowDialog();
         }
 
         private void contracts_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (Application.OpenForms.Count == 1) { Application.Exit(); }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time = DateTime.Now;
+            toolStrip1.Items[0].Text = " Время: " + time.ToLongTimeString();
+            toolStrip1.Items[2].Text = "Пользователь: " + PublicClasses.UserLogin;
+            toolStrip1.Items[4].Text = "Соединения с базой: активно";
         }
     }
 }

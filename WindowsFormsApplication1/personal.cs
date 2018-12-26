@@ -106,5 +106,46 @@ namespace WindowsFormsApplication1
         {
             if (Application.OpenForms.Count == 1) { Application.Exit(); }
         }
+
+        private void информацияОНедвижимостиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            property prty = new property();
+            prty.Show();
+            this.Close();
+        }
+
+        private void информацияОКлиентахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clients clnt = new clients();
+            clnt.Show();
+            this.Close();
+        }
+
+        private void информацияОВладельцахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            owners ownr = new owners();
+            ownr.Show();
+            this.Close();
+        }
+
+        private void информацияОСотрудникахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            personal prsnl = new personal();
+            prsnl.Show();
+            this.Close();
+        }
+
+        private void информацияОДогворахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contracts cntrct = new contracts();
+            cntrct.Show();
+            this.Close();
+        }
+
+        private void соединениеСБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dbSettings dbsttngst = new dbSettings();
+            dbsttngst.ShowDialog();
+        }
     }
 }

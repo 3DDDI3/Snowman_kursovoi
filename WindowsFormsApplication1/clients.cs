@@ -102,5 +102,39 @@ namespace WindowsFormsApplication1
             toolStrip1.Items[2].Text = "Пользователь: " + PublicClasses.UserLogin;
             toolStrip1.Items[4].Text = "Соединения с базой: активно";
         }
+
+        private void ИнформацияОНедвижимости_Click(object sender, EventArgs e)
+        {
+            property prty = new property();
+            prty.Show();
+            this.Close();
+        }
+
+        private void информацияОКлиентахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clients clnt = new clients();
+            clnt.Show();
+            this.Close();
+        }
+
+        private void информацияОВладельцахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            owners ownr = new owners();
+            ownr.Show();
+            this.Close();
+        }
+
+        private void информацияОСотрудникахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            personal prsnl = new personal();
+            prsnl.Show();
+            this.Close();
+        }
+
+        private void соединениеСБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dbSettings dbsttngs = new dbSettings();
+            dbsttngs.ShowDialog();
+        }
     }
 }

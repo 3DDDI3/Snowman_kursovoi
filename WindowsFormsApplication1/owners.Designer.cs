@@ -58,7 +58,8 @@
             this.договораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.информацияОДогогворахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкаСоединенияСБазойToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.соединениеСБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -69,14 +70,14 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(83, 16);
+            this.comboBox1.Location = new System.Drawing.Point(83, 32);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(263, 21);
             this.comboBox1.TabIndex = 16;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(394, 12);
+            this.button1.Location = new System.Drawing.Point(394, 28);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 26);
             this.button1.TabIndex = 15;
@@ -87,7 +88,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(17, 53);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 60);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -99,7 +100,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 19);
+            this.label1.Location = new System.Drawing.Point(14, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 13;
@@ -116,7 +117,7 @@
             this.toolStripLabel2,
             this.toolStripSeparator2,
             this.toolStripLabel3});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 429);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 436);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.toolStrip1.Size = new System.Drawing.Size(613, 25);
@@ -198,8 +199,8 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Azure;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.недвижимостьToolStripMenuItem,
-            this.владельцыToolStripMenuItem,
             this.клиентыToolStripMenuItem,
+            this.владельцыToolStripMenuItem,
             this.сотрудникиToolStripMenuItem,
             this.договораToolStripMenuItem,
             this.настройкаСоединенияСБазойToolStripMenuItem});
@@ -237,6 +238,7 @@
             this.информацияОВладельцахToolStripMenuItem.Name = "информацияОВладельцахToolStripMenuItem";
             this.информацияОВладельцахToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
             this.информацияОВладельцахToolStripMenuItem.Text = "Информация о владельцах";
+            this.информацияОВладельцахToolStripMenuItem.Click += new System.EventHandler(this.информацияОВладельцахToolStripMenuItem_Click);
             // 
             // клиентыToolStripMenuItem
             // 
@@ -251,6 +253,7 @@
             this.информацияОКлиентахToolStripMenuItem.Name = "информацияОКлиентахToolStripMenuItem";
             this.информацияОКлиентахToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
             this.информацияОКлиентахToolStripMenuItem.Text = "Информация о клиентах";
+            this.информацияОКлиентахToolStripMenuItem.Click += new System.EventHandler(this.информацияОКлиентахToolStripMenuItem_Click);
             // 
             // сотрудникиToolStripMenuItem
             // 
@@ -265,38 +268,50 @@
             this.информацияОНедвижимостиToolStripMenuItem1.Name = "информацияОНедвижимостиToolStripMenuItem1";
             this.информацияОНедвижимостиToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
             this.информацияОНедвижимостиToolStripMenuItem1.Text = "Информация о недвижимости";
+            this.информацияОНедвижимостиToolStripMenuItem1.Click += new System.EventHandler(this.информацияОНедвижимостиToolStripMenuItem1_Click);
             // 
             // договораToolStripMenuItem
             // 
             this.договораToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.информацияОДогогворахToolStripMenuItem});
             this.договораToolStripMenuItem.Name = "договораToolStripMenuItem";
-            this.договораToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
-            this.договораToolStripMenuItem.Text = "Договора";
+            this.договораToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.договораToolStripMenuItem.Text = "Договоры";
             // 
             // информацияОДогогворахToolStripMenuItem
             // 
             this.информацияОДогогворахToolStripMenuItem.Name = "информацияОДогогворахToolStripMenuItem";
             this.информацияОДогогворахToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.информацияОДогогворахToolStripMenuItem.Text = "Информация о догогворах";
+            this.информацияОДогогворахToolStripMenuItem.Click += new System.EventHandler(this.информацияОДогогворахToolStripMenuItem_Click);
             // 
             // настройкаСоединенияСБазойToolStripMenuItem
             // 
+            this.настройкаСоединенияСБазойToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.соединениеСБДToolStripMenuItem});
             this.настройкаСоединенияСБазойToolStripMenuItem.Name = "настройкаСоединенияСБазойToolStripMenuItem";
-            this.настройкаСоединенияСБазойToolStripMenuItem.Size = new System.Drawing.Size(190, 20);
-            this.настройкаСоединенияСБазойToolStripMenuItem.Text = "Настройка соединения с базой";
+            this.настройкаСоединенияСБазойToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.настройкаСоединенияСБазойToolStripMenuItem.Text = "Настройки";
             // 
-            // contextMenuStrip2
+            // соединениеСБДToolStripMenuItem
             // 
-            this.contextMenuStrip2.Name = "contextMenuStrip2";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            this.соединениеСБДToolStripMenuItem.Name = "соединениеСБДToolStripMenuItem";
+            this.соединениеСБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.соединениеСБДToolStripMenuItem.Text = "Соединение с БД";
+            this.соединениеСБДToolStripMenuItem.Click += new System.EventHandler(this.соединениеСБДToolStripMenuItem_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // owners
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(613, 454);
+            this.ClientSize = new System.Drawing.Size(613, 461);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.comboBox1);
@@ -353,6 +368,7 @@
         private System.Windows.Forms.ToolStripMenuItem договораToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem информацияОДогогворахToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem настройкаСоединенияСБазойToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem соединениеСБДToolStripMenuItem;
+        private System.Windows.Forms.Timer timer1;
     }
 }

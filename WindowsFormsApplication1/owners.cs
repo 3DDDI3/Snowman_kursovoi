@@ -17,6 +17,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
         }
 
+        public DateTime time = new DateTime();
+
         public void loadDataGridView()
         {
             dataGridView1.DataSource = new DataSet();
@@ -97,6 +99,48 @@ namespace WindowsFormsApplication1
             property prty = new property();
             prty.Show();
             this.Close();
+        }
+
+        private void информацияОКлиентахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clients clnt = new clients();
+            clnt.Show();
+            this.Close();
+        }
+
+        private void информацияОВладельцахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            owners ownr = new owners();
+            ownr.Show();
+            this.Close();
+        }
+
+        private void информацияОНедвижимостиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            personal prsnl = new personal();
+            prsnl.Show();
+            this.Close();
+        }
+
+        private void информацияОДогогворахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contracts cntrcts = new contracts();
+            cntrcts.Show();
+            this.Close();
+        }
+
+        private void соединениеСБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dbSettings dbsttngs = new dbSettings();
+            dbsttngs.ShowDialog();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            time = DateTime.Now;
+            toolStrip1.Items[0].Text = " Время: " + time.ToLongTimeString();
+            toolStrip1.Items[2].Text = "Пользователь: " + PublicClasses.UserLogin;
+            toolStrip1.Items[4].Text = "Соединения с базой: активно";
         }
     }
 }

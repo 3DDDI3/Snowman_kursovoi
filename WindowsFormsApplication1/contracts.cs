@@ -32,7 +32,6 @@ namespace WindowsFormsApplication1
             dataGridView1.Columns[8].HeaderText = "Цена";
             dataGridView1.Columns[9].HeaderText = "Выставлен на";
             dataGridView1.Columns[10].HeaderText = "Статус договора";
-            //PublicClasses.sql="select idProperty"
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -77,6 +76,46 @@ namespace WindowsFormsApplication1
                 PublicClasses.selectedRowIndex = Convert.ToInt16(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
                 dataGridView1.Rows[e.RowIndex].ContextMenuStrip = contextMenuStrip1;
             }
+        }
+
+        private void информацияОНедвижимостиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            property prty = new property();
+            prty.Show();
+            this.Close();
+        }
+
+        private void информацияОКлиентахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            clients clnt = new clients();
+            clnt.Show();
+            this.Close();
+        }
+
+        private void информацияОВладельцахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            owners ownr = new owners();
+            ownr.Show();
+            this.Close();
+        }
+
+        private void информацияОСотрудникахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            personal prsnl = new personal();
+            prsnl.Show();
+            this.Close();
+        }
+
+        private void соединениеСБДToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dbSettings dbsttgs = new dbSettings();
+            dbsttgs.Show();
+            this.Close();
+        }
+
+        private void contracts_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (Application.OpenForms.Count == 1) { Application.Exit(); }
         }
     }
 }

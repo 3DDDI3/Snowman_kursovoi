@@ -111,9 +111,10 @@ namespace WindowsFormsApplication1
             int[] mas = new int[executeSqlRequest().Tables[0].Rows.Count];
             for (int i = 0; i < executeSqlRequest().Tables[0].Rows.Count; i++)
             {
-                mas[i] =(int)executeSqlRequest().Tables[0].Rows[i].ItemArray[0];
+                mas[i] = (int)executeSqlRequest().Tables[0].Rows[i].ItemArray[0];
             }
             return mas;
         }
+
     }
 }

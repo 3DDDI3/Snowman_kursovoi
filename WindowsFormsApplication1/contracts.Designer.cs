@@ -49,9 +49,23 @@
             this.button2 = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.изменитьСтатусToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.недвижимостьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияОНедвижимостиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияОКлиентахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.владельцыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияОВладельцахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сотрудникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияОСотрудникахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.договораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.информацияОДоговорахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.соединениеСБДToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -230,27 +244,137 @@
             this.изменитьСтатусToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.изменитьСтатусToolStripMenuItem.Text = "Изменить статус";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.недвижимостьToolStripMenuItem,
+            this.клиентыToolStripMenuItem,
+            this.владельцыToolStripMenuItem,
+            this.сотрудникиToolStripMenuItem,
+            this.договораToolStripMenuItem,
+            this.настройкиToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(709, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // недвижимостьToolStripMenuItem
+            // 
+            this.недвижимостьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОНедвижимостиToolStripMenuItem});
+            this.недвижимостьToolStripMenuItem.Name = "недвижимостьToolStripMenuItem";
+            this.недвижимостьToolStripMenuItem.Size = new System.Drawing.Size(102, 20);
+            this.недвижимостьToolStripMenuItem.Text = "Недвижимость";
+            // 
+            // информацияОНедвижимостиToolStripMenuItem
+            // 
+            this.информацияОНедвижимостиToolStripMenuItem.Name = "информацияОНедвижимостиToolStripMenuItem";
+            this.информацияОНедвижимостиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.информацияОНедвижимостиToolStripMenuItem.Text = "Информация о недвижимости";
+            this.информацияОНедвижимостиToolStripMenuItem.Click += new System.EventHandler(this.информацияОНедвижимостиToolStripMenuItem_Click);
+            // 
+            // клиентыToolStripMenuItem
+            // 
+            this.клиентыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОКлиентахToolStripMenuItem});
+            this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
+            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.клиентыToolStripMenuItem.Text = "Клиенты";
+            // 
+            // информацияОКлиентахToolStripMenuItem
+            // 
+            this.информацияОКлиентахToolStripMenuItem.Name = "информацияОКлиентахToolStripMenuItem";
+            this.информацияОКлиентахToolStripMenuItem.Size = new System.Drawing.Size(210, 22);
+            this.информацияОКлиентахToolStripMenuItem.Text = "Информация о клиентах";
+            this.информацияОКлиентахToolStripMenuItem.Click += new System.EventHandler(this.информацияОКлиентахToolStripMenuItem_Click);
+            // 
+            // владельцыToolStripMenuItem
+            // 
+            this.владельцыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОВладельцахToolStripMenuItem});
+            this.владельцыToolStripMenuItem.Name = "владельцыToolStripMenuItem";
+            this.владельцыToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.владельцыToolStripMenuItem.Text = "Владельцы";
+            // 
+            // информацияОВладельцахToolStripMenuItem
+            // 
+            this.информацияОВладельцахToolStripMenuItem.Name = "информацияОВладельцахToolStripMenuItem";
+            this.информацияОВладельцахToolStripMenuItem.Size = new System.Drawing.Size(223, 22);
+            this.информацияОВладельцахToolStripMenuItem.Text = "Информация о владельцах";
+            this.информацияОВладельцахToolStripMenuItem.Click += new System.EventHandler(this.информацияОВладельцахToolStripMenuItem_Click);
+            // 
+            // сотрудникиToolStripMenuItem
+            // 
+            this.сотрудникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОСотрудникахToolStripMenuItem});
+            this.сотрудникиToolStripMenuItem.Name = "сотрудникиToolStripMenuItem";
+            this.сотрудникиToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.сотрудникиToolStripMenuItem.Text = "Сотрудники";
+            // 
+            // информацияОСотрудникахToolStripMenuItem
+            // 
+            this.информацияОСотрудникахToolStripMenuItem.Name = "информацияОСотрудникахToolStripMenuItem";
+            this.информацияОСотрудникахToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
+            this.информацияОСотрудникахToolStripMenuItem.Text = "Информация о сотрудниках";
+            this.информацияОСотрудникахToolStripMenuItem.Click += new System.EventHandler(this.информацияОСотрудникахToolStripMenuItem_Click);
+            // 
+            // договораToolStripMenuItem
+            // 
+            this.договораToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.информацияОДоговорахToolStripMenuItem});
+            this.договораToolStripMenuItem.Name = "договораToolStripMenuItem";
+            this.договораToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.договораToolStripMenuItem.Text = "Договоры";
+            // 
+            // информацияОДоговорахToolStripMenuItem
+            // 
+            this.информацияОДоговорахToolStripMenuItem.Name = "информацияОДоговорахToolStripMenuItem";
+            this.информацияОДоговорахToolStripMenuItem.Size = new System.Drawing.Size(217, 22);
+            this.информацияОДоговорахToolStripMenuItem.Text = "Информация о договорах";
+            // 
+            // настройкиToolStripMenuItem
+            // 
+            this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.соединениеСБДToolStripMenuItem});
+            this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
+            this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // соединениеСБДToolStripMenuItem
+            // 
+            this.соединениеСБДToolStripMenuItem.Name = "соединениеСБДToolStripMenuItem";
+            this.соединениеСБДToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.соединениеСБДToolStripMenuItem.Text = "Соединение с БД";
+            this.соединениеСБДToolStripMenuItem.Click += new System.EventHandler(this.соединениеСБДToolStripMenuItem_Click);
+            // 
             // contracts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(709, 444);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "contracts";
             this.Text = "Договоры";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.contracts_FormClosed);
             this.Load += new System.EventHandler(this.contracts_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -275,5 +399,18 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem изменитьСтатусToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem недвижимостьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem информацияОНедвижимостиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem информацияОКлиентахToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem владельцыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem информацияОВладельцахToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem сотрудникиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem информацияОСотрудникахToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem договораToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem информацияОДоговорахToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem соединениеСБДToolStripMenuItem;
     }
 }

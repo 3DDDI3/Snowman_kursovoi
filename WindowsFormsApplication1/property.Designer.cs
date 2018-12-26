@@ -320,7 +320,7 @@
             this.купитьНедвижимостьToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 158);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(189, 136);
             // 
             // добавтьToolStripMenuItem
             // 
@@ -362,7 +362,6 @@
             this.купитьНедвижимостьToolStripMenuItem1.Name = "купитьНедвижимостьToolStripMenuItem1";
             this.купитьНедвижимостьToolStripMenuItem1.Size = new System.Drawing.Size(188, 22);
             this.купитьНедвижимостьToolStripMenuItem1.Text = "Купить недвижимость";
-            this.купитьНедвижимостьToolStripMenuItem1.Click += new System.EventHandler(this.купитьНедвижимостьToolStripMenuItem1_Click);
             // 
             // toolStrip1
             // 

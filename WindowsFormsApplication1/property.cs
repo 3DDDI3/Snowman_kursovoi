@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = new DataSet();
             if (searchValue == "where ")
             {
-                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
                   "from property " +
                   "left join type on property.type = type.idType " +
                   "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
                 "from property " +
                 "left join type on property.type = type.idType " +
                 "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
@@ -153,6 +153,7 @@ namespace WindowsFormsApplication1
             if (searchValue == "where ") { MessageBox.Show("Вы не заполнили ни одного поля", "Поиск недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             else
             {
+                MessageBox.Show(PublicClasses.sql);
                 label10.Visible = true;
                 if (PublicClasses.executeSqlRequest().Tables[0].Rows.Count != 0)
                 {
@@ -164,24 +165,23 @@ namespace WindowsFormsApplication1
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e) //пункт меню
         {
-            this.Hide();
             detailedDescription form7 = new detailedDescription();
             form7.ShowDialog();
+            this.Close();
         }
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e) //пункт меню
         {
-            this.Hide();
             addProperty form6 = new addProperty();
             form6.ShowDialog();
+            this.Close();
         }
 
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e) //пункт меню
         {
-            this.Hide();
             detailedDescription form7 = new detailedDescription();
             form7.ShowDialog();
-            
+            this.Close();
         }
 
         private void удалитьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -229,16 +229,6 @@ namespace WindowsFormsApplication1
             addClientOwner addOwner = new addClientOwner("addOwner");
             addOwner.ShowDialog();
             this.Close();
-        }
-
-        private void купитьНедвижимостьToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            /*if (PublicClasses.privelege == 1)
-            {
-                PublicClasses.sql = "insert into contracts(idContract,idProperty,idPerson,idClient,date) values(" + values.Remove(values.Length - 1) + ",0" + ")";
-                PublicClasses.executeSqlRequest();
-                MessageBox.Show("Недвижимость успешно добавлена", "Добавление недвижимости", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }*/
         }
 
         private void информацияОСотрудникахToolStripMenuItem_Click(object sender, EventArgs e)

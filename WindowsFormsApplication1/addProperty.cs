@@ -23,7 +23,7 @@ namespace WindowsFormsApplication1
             comboBox5.Items.AddRange(PublicClasses.loadStringsToCmbbox());
             PublicClasses.sql = "select city from cities";
             comboBox1.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select area from area";
+            PublicClasses.sql = "select area from areas";
             comboBox2.Items.AddRange(PublicClasses.loadStringsToCmbbox());
             PublicClasses.sql = "select district from district";
             comboBox3.Items.AddRange(PublicClasses.loadStringsToCmbbox());
@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
                 }
                 if (comboBox2.Text != "")
                 {
-                    PublicClasses.sql = "select * from area where Area='" + comboBox2.Text + "'";
+                    PublicClasses.sql = "select * from areas where Area='" + comboBox2.Text + "'";
                     int idArea = Convert.ToInt16(PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[0]);
                     columns += "idArea,";
                     values += idArea + ",";
@@ -95,9 +95,9 @@ namespace WindowsFormsApplication1
                 }
                 if (textBox2.Text != "") { columns += "countRoom,"; values += textBox2.Text + ","; }
                 if (textBox3.Text != "") { columns += "isFloor,"; values += textBox3.Text + ","; }
-                if (textBox4.Text != "") { columns += "countFloor,"; values += textBox1.Text + ","; }
+                if (textBox4.Text != "") { columns += "countFloor,"; values += textBox4.Text + ","; }
                 if (textBox1.Text != "") { columns += "price,"; values += textBox1.Text + ","; }
-                if (checkBox1.Checked) { columns += "isLoggia,"; values += "1,"; }
+                if (checkBox1.Checked) { columns += "isLoggia,"; values += "1,"; } else { columns += "isLoggia,"; values += "0,"; }
                 if (radioButton1.Checked) { columns += "buyRent,"; values += "0,"; }
                 if (radioButton2.Checked) { columns += "buyRent,"; values += "1,"; }
                 try

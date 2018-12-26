@@ -104,6 +104,12 @@ namespace WindowsFormsApplication1
                     form5.ShowDialog();
                 }
             }
+            if (Convert.ToInt16(PublicClasses.readFromFileUser()) != 0)
+            {
+                PublicClasses.sql = "select * from autorization_datas where idUser=" + PublicClasses.readFromFileUser();
+                textBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[1].ToString();
+                textBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[3].ToString();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e) //вход в ситему
@@ -131,7 +137,7 @@ namespace WindowsFormsApplication1
                         PublicClasses.sql = "select * from autorization_datas where login='" + textBox1.Text + "' and password='" + GetHashString(textBox2.Text) + "';";
                         PublicClasses.idUser = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[0].ToString();
                         PublicClasses.UserLogin = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[1].ToString();
-                        if (PublicClasses.executeSqlRequest().Tables[0].Rows.Count == 0 /*&& captcha!=textBox3.Text*/)
+                        if (PublicClasses.executeSqlRequest().Tables[0].Rows.Count == 0 /*|| captcha!=textBox3.Text*/)
                         { MessageBox.Show("Ой что-то пошло не так. Попробуйте заполнить поля снова.", "Окно предупреждения", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                         else
                         {

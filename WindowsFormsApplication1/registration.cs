@@ -39,7 +39,11 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e) //регистрация пользователя
         {
-            if (textBox1.Text != "" && textBox2.Text != "")
+            bool l;
+            errorProvider1.Clear();
+            if (string.IsNullOrWhiteSpace(textBox1.Text)) { errorProvider1.SetError(textBox1, "Поле не должно быть пустым"); l = false; } else { l = true; }
+            if (string.IsNullOrWhiteSpace(textBox2.Text)) { errorProvider1.SetError(textBox2, "Поле не должно быть пустым"); l = false; } else { l = true; }
+            if(l)
             {
                 if (PublicClasses.idUser == null)
                 {
@@ -61,11 +65,6 @@ namespace WindowsFormsApplication1
                     }
                     catch (Exception ex) { MessageBox.Show(ex.Message, "Регистрация пользователя", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                 }
-            }
-            else
-            {
-                errorProvider1.SetError(textBox1, "Поле не должно быть пустым");
-                errorProvider1.SetError(textBox2, "Поле не должно быть пустым");
             }
         }
 

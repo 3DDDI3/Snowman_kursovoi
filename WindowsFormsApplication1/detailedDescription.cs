@@ -12,21 +12,36 @@ namespace WindowsFormsApplication1
 {
     public partial class detailedDescription : Form
     {
-        public detailedDescription()
+        public detailedDescription(string inString)
         {
             InitializeComponent();
+            switch(inString)
+            {
+                case "withdrawFromSale":
+                    {
+                        this.Load += withdrawFromSaleLoad;
+                        button2.Click += formClose;
+                        break;
+                    }
+                case "showOrChangeDetailedDescription":
+                    {
+                        this.Load += showOrChangeDetailedDescriptionLoad;
+                        button2.Click += formClose;
+                        break;
+                    }
+            }
         }
 
         public void loadDataGridView() //пользовательская функция для вывода dataGridView
         {
             property form2 = new property();
             form2.dataGridView1.DataSource = null;
-            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на'" +
+            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на' " +
                   "from property " +
                   "left join type on property.type = type.idType " +
                   "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
                   "left join cities on property.idCity = cities.idCity " +
-                  "left join area on property.idArea = area.idArea " +
+                  "left join areas on property.idArea = areas.idArea " +
                   "left join district on property.idDistrict = district.idDistrict " +
                   "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation " +
                   "where isRemoveBuyRent<>1";
@@ -42,51 +57,50 @@ namespace WindowsFormsApplication1
         }
         public void loadFormFields(int idProperty, int rowIndex)
         {
-            PublicClasses.sql = "select distinct(concat(type.type,' ',typeproperty.typeProperty)) from type left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty";
-            comboBox5.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select city from cities";
-            comboBox1.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select area from area";
-            comboBox2.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select district from district";
-            comboBox3.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select undergroundStation from undergroundstations";
-            comboBox4.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select concat(surname,' ',left(name,1),'. ',left(lastname,1),'.') from owners";
-            comboBox6.Items.AddRange(PublicClasses.loadStringsToCmbbox());
-            PublicClasses.sql = "select concat(type.type, ' ', typeproperty.typeProperty), cities.city, area.area, district.district, undergroundstations.undergroundStation, if(property.buyRent=1,'Продажу','Аренду'), concat(surname,' ',left(name,1),'. ',left(lastname,1),'.'), price, isLoggia, isFloor, countFloor, countRoom, description " +
-               "from property left join type on property.type = type.idType " +
-               "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
-               "left join cities on property.idCity = cities.idCity " +
-               "left join area on property.idArea = area.idArea " +
-               "left join district on property.idDistrict = district.idDistrict " +
-               "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation " +
-               "left join owners on property.idOwner=owners.idOwner " +
-               "where property.idProperty=" + idProperty + "";
-            if(idProperty==-1)
+            PublicClasses.sql = "select cities.city, areas.area, district.district, undergroundstations.undergroundStation, concat(type.type, ' ', typeproperty.typeProperty), countRoom, isFloor, countFloor,  isLoggia, if(property.buyRent=1,'Продажу','Аренду'), price, concat(surname,' ',left(name,1),'. ',left(lastname,1),'.'), description " +
+                "from property left join type on property.type = type.idType " +
+                "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
+                "left join cities on property.idCity = cities.idCity " +
+                "left join areas on property.idArea = areas.idArea " +
+                "left join district on property.idDistrict = district.idDistrict " +
+                "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation " +
+                "left join owners on property.idOwner = owners.idOwner " +
+                "where property.idProperty ="+idProperty;
+            if (idProperty > -1)
+            {
+                comboBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[0].ToString();
+                comboBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[1].ToString();
+                comboBox3.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[2].ToString();
+                comboBox4.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[3].ToString();
+                comboBox5.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[4].ToString();
+                textBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[5].ToString();
+                textBox3.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[6].ToString();
+                textBox4.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[7].ToString();
+                if (Convert.ToBoolean(PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[8]) == true) { checkBox1.Checked = true; }
+                if (PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[9].ToString() == "Продажу") { radioButton2.Checked = true; }
+                else { radioButton1.Checked = true; }
+                textBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[10].ToString();
+                comboBox6.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[11].ToString();
+                richTextBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[12].ToString();
+            }
+            else
             {
                 PublicClasses.sql = PublicClasses.sql.Remove(PublicClasses.sql.IndexOf("where"));
+                comboBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[0].ToString();
+                comboBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[1].ToString();
+                comboBox3.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[2].ToString();
+                comboBox4.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[3].ToString();
+                comboBox5.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[4].ToString();
+                textBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[5].ToString();
+                textBox3.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[6].ToString();
+                textBox4.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[7].ToString();
+                if (Convert.ToBoolean(PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[8]) == true) { checkBox1.Checked = true; }
+                if (PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[9].ToString() == "Продажу") { radioButton2.Checked = true; }
+                else { radioButton1.Checked = true; }
+                textBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[10].ToString();
+                comboBox6.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[11].ToString();
+                richTextBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[12].ToString();
             }
-            comboBox5.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[0].ToString();
-            comboBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[1].ToString();
-            comboBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[2].ToString();
-            comboBox3.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[3].ToString();
-            comboBox4.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[4].ToString();
-            comboBox6.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[6].ToString();
-            textBox1.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[7].ToString();
-            if (!string.IsNullOrEmpty(PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[8].ToString())) { checkBox1.Checked = true; }
-            textBox3.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[9].ToString();
-            textBox4.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[10].ToString();
-            textBox2.Text = PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[11].ToString();
-            if (PublicClasses.executeSqlRequest().Tables[0].Rows[rowIndex].ItemArray[5].ToString() == "Аренду") { radioButton1.Checked = true; }
-            else { radioButton2.Checked = true; }
-            richTextBox1.Text=PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[12].ToString();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            loadDataGridView();
-            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e) //кнопка Редактировать данные
@@ -123,7 +137,7 @@ namespace WindowsFormsApplication1
                 }
                 if (comboBox2.Text != "")
                 {
-                    PublicClasses.sql = "select * from area where Area='" + comboBox2.Text + "'";
+                    PublicClasses.sql = "select * from areas where area='" + comboBox2.Text + "'";
                     int idArea = Convert.ToInt16(PublicClasses.executeSqlRequest().Tables[0].Rows[0].ItemArray[0]);
                     set += "idArea=" + idArea + ",";
                 }
@@ -175,25 +189,32 @@ namespace WindowsFormsApplication1
             MessageBox.Show("Недвижимость снята с продажи.", "Снятие недвижимости с продажи", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void Form7_Load(object sender, EventArgs e) //вставка данных в поля
+        private void withdrawFromSaleLoad(object sender, EventArgs e) //снятие с продажи
         {
-            loadFormFields(PublicClasses.selectedRowIndex,0);
-            if(PublicClasses.privelege==1)
-            {
-                button1.Enabled = false;
-                button3.Enabled = false;
-                button4.Enabled = false;
-            }
+            button5.Visible = false;
+            button6.Visible = false;
+            loadFormFields(PublicClasses.selectedRowIndex,PublicClasses.rowIndex);
+        }
+
+        private void showOrChangeDetailedDescriptionLoad(object sender, EventArgs e) //изменение данных недвижимости
+        {
+            loadFormFields(PublicClasses.selectedRowIndex, PublicClasses.rowIndex);
+        }
+
+        private void formClose(object sender, EventArgs e) //подробная информация
+        {
+            loadDataGridView();
+            this.Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
+            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
                    "from property " +
                    "left join type on property.type = type.idType " +
                    "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
                    "left join cities on property.idCity = cities.idCity " +
-                   "left join area on property.idArea = area.idArea " +
+                   "left join areas on property.idArea = areas.idArea " +
                    "left join district on property.idDistrict = district.idDistrict " +
                    "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation where isRemoveBuyRent<>1";
             if (PublicClasses.rowIndex > 0)
@@ -206,20 +227,21 @@ namespace WindowsFormsApplication1
 
         private void button6_Click(object sender, EventArgs e)
         {
-            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
+            PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
                   "from property " +
                   "left join type on property.type = type.idType " +
                   "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
                   "left join cities on property.idCity = cities.idCity " +
-                  "left join area on property.idArea = area.idArea " +
+                  "left join areas on property.idArea = areas.idArea " +
                   "left join district on property.idDistrict = district.idDistrict " +
                   "left join undergroundstations on property.idUndergroundStation = undergroundstations.idUndergroundStation where isRemoveBuyRent<>1";
-            if (PublicClasses.rowIndex > 0)
+            if (PublicClasses.rowIndex >= 0)
             {
                 PublicClasses.rowIndex++;
                 PublicClasses.selectedRowIndex = Convert.ToInt16(PublicClasses.executeSqlRequest().Tables[0].Rows[PublicClasses.rowIndex].ItemArray[0]);
             }
             loadFormFields(-1, PublicClasses.rowIndex);
         }
+
     }
 }

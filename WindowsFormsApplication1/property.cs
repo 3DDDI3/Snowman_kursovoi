@@ -27,7 +27,7 @@ namespace WindowsFormsApplication1
             dataGridView1.DataSource = new DataSet();
             if (searchValue == "where ")
             {
-                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price "+
                   "from property " +
                   "left join type on property.type = type.idType " +
                   "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
@@ -38,7 +38,7 @@ namespace WindowsFormsApplication1
             }
             else
             {
-                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', area.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
+                PublicClasses.sql = "select idProperty, concat(type.type, ' ', typeproperty.typeProperty) as 'Тип Недвижимости', cities.city as 'Город', areas.area as 'Область', district.district as 'Район', undergroundstations.undergroundStation as 'ст. Метро', if(property.buyRent=1,'Продажy','Арендy') as 'Выставлен на', price " +
                 "from property " +
                 "left join type on property.type = type.idType " +
                 "left join typeproperty on type.idTypeProperty = typeproperty.idTypeProperty " +
@@ -165,7 +165,7 @@ namespace WindowsFormsApplication1
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e) //пункт меню
         {
-            detailedDescription form7 = new detailedDescription();
+            detailedDescription form7 = new detailedDescription("withdrawFromSale");
             form7.ShowDialog();
             this.Close();
         }
@@ -179,7 +179,7 @@ namespace WindowsFormsApplication1
 
         private void редактироватьToolStripMenuItem_Click(object sender, EventArgs e) //пункт меню
         {
-            detailedDescription form7 = new detailedDescription();
+            detailedDescription form7 = new detailedDescription("showOrChangeDetailedDescription");
             form7.ShowDialog();
             this.Close();
         }
@@ -192,7 +192,7 @@ namespace WindowsFormsApplication1
 
         private void подробнаяИнфорацияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            detailedDescription form7 = new detailedDescription();
+            detailedDescription form7 = new detailedDescription("showOrChangeDetailedDescription");
             form7.ShowDialog();
             this.Close();
         }

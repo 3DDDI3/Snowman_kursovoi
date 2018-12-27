@@ -199,6 +199,12 @@ namespace WindowsFormsApplication1
         private void showOrChangeDetailedDescriptionLoad(object sender, EventArgs e) //изменение данных недвижимости
         {
             loadFormFields(PublicClasses.selectedRowIndex, PublicClasses.rowIndex);
+            if (PublicClasses.privelege == 1)
+            {
+                button1.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+            }
         }
 
         private void formClose(object sender, EventArgs e) //подробная информация

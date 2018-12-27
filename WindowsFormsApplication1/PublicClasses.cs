@@ -50,10 +50,10 @@ namespace WindowsFormsApplication1
             adapter.Fill(ds);
             return ds;
         }
-        static public void writeToFileUser() // функция "Запомнть меня" выкл
+        static public void writeToFileUser(System.Windows.Forms.CheckBox chkbx) // функция "Запомнть меня" выкл
         {
             StreamWriter streamWrite = new StreamWriter("rememberMe.txt", false);
-            if (Convert.ToInt16(idUser)!=0) { streamWrite.WriteLine(idUser); }
+            if (chkbx.Checked) { streamWrite.WriteLine(idUser); }
             else { streamWrite.WriteLine("0"); }
             streamWrite.Close();
         }

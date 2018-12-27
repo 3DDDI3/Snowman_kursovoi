@@ -148,7 +148,7 @@ namespace WindowsFormsApplication1
                             this.Hide();
                             form2.Show();
                         }
-                        if (checkBox1.Checked) { PublicClasses.writeToFileUser(); }
+                        PublicClasses.writeToFileUser(checkBox1);
                     }
                     catch (Exception ex) { MessageBox.Show("Неправильные пароль или логин.", "Вход в систему", MessageBoxButtons.OK, MessageBoxIcon.Error); }
             }
